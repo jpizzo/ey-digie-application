@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DataCleansingForm</class>
+ <widget class="QWidget" name="DataCleansingForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1064</width>
+    <height>807</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+    <pointsize>8</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Data Cleanser</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>EY-logo-Social.png</normaloff>EY-logo-Social.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#DataCleansingForm{
+
+background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(230, 230, 230, 255), stop:1 rgba(255, 255, 255, 255));
+
+}
+
+
+QTextBrowser{
+background: rgba(0,0,0,0.2);
+}
+
+QScrollBar:horizontal {
+    border: 0px;
+    background: #DEDEDE;
+    height: 8px;
+    margin: 0px 14px 0px 14px;
+}
+
+QScrollBar::handle:horizontal {
+    background: gray;
+    min-width: 20px;
+	margin: -2px
+}
+
+QScrollBar::add-line:horizontal {
+    background: #DEDEDE;
+    width: 12px;
+    border: #FAFAFA;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    background: #DEDEDE;
+    width: 12px;
+    border: #FAFAFA;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+QScrollBar:vertical {
+    border: 0px;
+    background: #DEDEDE;
+    width: 8px;
+    margin: 14px 0px 14px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: gray;
+    min-width: 20px;
+    margin: -2px
+}
+
+QScrollBar::add-line:vertical {
+    background: #DEDEDE;
+    height: 12px;
+    border: #FAFAFA;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+    background: #DEDEDE;
+    height: 12px;
+    border: #FAFAFA;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+</string>
+  </property>
+  <widget class="QGroupBox" name="gboxFileSelection">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>1041</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>David</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="title">
+    <string>STEP 1: File Selection</string>
+   </property>
+   <widget class="QPushButton" name="pbtnBrowseFile">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>26</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Helvetica</family>
+      <weight>12</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::TabFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #FFFF37;
+	border-radius: 3px;
+	color: #4B4B4B;
+	font-family: &quot;Helvetica&quot;;
+	font-weight: 100;
+	border: 1px solid #E1DC00;
+	border-top-width: #E1DC00;
+	border-left-width: #E1DC00;
+}
+
+
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0   #82C3D7, stop:1 #C8E4EE);
+	border: 0.5px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Browse File</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="tbFileSelected">
+    <property name="geometry">
+     <rect>
+      <x>102</x>
+      <y>26</y>
+      <width>921</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="lineWrapMode">
+     <enum>QTextEdit::NoWrap</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="gboxFilePreview">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>1041</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>David</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="title">
+    <string>File Preview</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+   <widget class="QTextEdit" name="ptxeFilePreview">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>43</y>
+      <width>1021</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial monospaced for SAP</family>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="lineWrapMode">
+     <enum>QTextEdit::NoWrap</enum>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtnGenPreview">
+    <property name="geometry">
+     <rect>
+      <x>773</x>
+      <y>18</y>
+      <width>127</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Helvetica</family>
+      <weight>12</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::TabFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #FFFF37;
+	border-radius: 3px;
+	color: #4B4B4B;
+	font-family: &quot;Helvetica&quot;;
+	font-weight: 100;
+	border: 1px solid #E1DC00;
+	border-top-width: #E1DC00;
+	border-left-width: #E1DC00;
+}
+
+
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0   #82C3D7, stop:1 #C8E4EE);
+	border: 0.5px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Generate Preview</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtnClearPreview">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>18</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Helvetica</family>
+      <weight>12</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::TabFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #FFFF37;
+	border-radius: 3px;
+	color: #4B4B4B;
+	font-family: &quot;Helvetica&quot;;
+	font-weight: 100;
+	border: 1px solid #E1DC00;
+	border-top-width: #E1DC00;
+	border-left-width: #E1DC00;
+}
+
+
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0   #82C3D7, stop:1 #C8E4EE);
+	border: 0.5px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>   Clear Preview    </string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="gboxFixFile">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>370</y>
+     <width>631</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>David</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="title">
+    <string>STEP 3: Actions</string>
+   </property>
+   <widget class="QWidget" name="wdgFixFile" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>331</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <widget class="QLabel" name="lblDelCount">
+     <property name="geometry">
+      <rect>
+       <x>2</x>
+       <y>10</y>
+       <width>161</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Calibri</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Enter Delimiter Count</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lnedEnterDelCount">
+     <property name="geometry">
+      <rect>
+       <x>175</x>
+       <y>10</y>
+       <width>137</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::StrongFocus</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pbtnFixFile">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>30</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Helvetica</family>
+      <weight>12</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::TabFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #FFFF37;
+	border-radius: 3px;
+	color: #4B4B4B;
+	font-family: &quot;Helvetica&quot;;
+	font-weight: 100;
+	border: 1px solid #E1DC00;
+	border-top-width: #E1DC00;
+	border-left-width: #E1DC00;
+}
+
+
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0   #82C3D7, stop:1 #C8E4EE);
+	border: 0.5px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Cleanse File</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtnExtractIssLines">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>30</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Helvetica</family>
+      <weight>12</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::TabFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #FFFF37;
+	border-radius: 3px;
+	color: #4B4B4B;
+	font-family: &quot;Helvetica&quot;;
+	font-weight: 100;
+	border: 1px solid #E1DC00;
+	border-top-width: #E1DC00;
+	border-left-width: #E1DC00;
+}
+
+
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0   #82C3D7, stop:1 #C8E4EE);
+	border: 0.5px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Extract Issue Lines</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblFixFileStatus">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>100</y>
+      <width>180</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="chkbHeaderOffset">
+    <property name="geometry">
+     <rect>
+      <x>14</x>
+      <y>70</y>
+      <width>151</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Enable Header Offset</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lnedRowsOffset">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>70</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblRowsOffset">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>72</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rows Offset</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtnExtractNonIssLines">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>60</y>
+      <width>141</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Helvetica</family>
+      <weight>12</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::TabFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #FFFF37;
+	border-radius: 3px;
+	color: #4B4B4B;
+	font-family: &quot;Helvetica&quot;;
+	font-weight: 100;
+	border: 1px solid #E1DC00;
+	border-top-width: #E1DC00;
+	border-left-width: #E1DC00;
+}
+
+
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0   #82C3D7, stop:1 #C8E4EE);
+	border: 0.5px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Extract Non Issue Lines</string>
+    </property>
+   </widget>
+   <zorder>wdgFixFile</zorder>
+   <zorder>pbtnFixFile</zorder>
+   <zorder>pbtnExtractIssLines</zorder>
+   <zorder>lblFixFileStatus</zorder>
+   <zorder>chkbHeaderOffset</zorder>
+   <zorder>lnedRowsOffset</zorder>
+   <zorder>lblRowsOffset</zorder>
+   <zorder>gboxAddtInfo</zorder>
+   <zorder>pbtnExtractNonIssLines</zorder>
+  </widget>
+  <widget class="QGroupBox" name="gboxFileProfile">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>370</y>
+     <width>391</width>
+     <height>421</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>David</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="title">
+    <string>STEP 2: Profile Data</string>
+   </property>
+   <widget class="QPlainTextEdit" name="ptxeFileAnalysis">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>351</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblEnterDel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Enter Delimiter</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lnedEnterDel">
+    <property name="geometry">
+     <rect>
+      <x>159</x>
+      <y>30</y>
+      <width>81</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="toolTip">
+     <string extracomment="Enter 'T' for tab delimited, 'S' for space delimited"/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtnProfile">
+    <property name="geometry">
+     <rect>
+      <x>294</x>
+      <y>30</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Helvetica</family>
+      <weight>12</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::TabFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #FFFF37;
+	border-radius: 3px;
+	color: #4B4B4B;
+	font-family: &quot;Helvetica&quot;;
+	font-weight: 100;
+	border: 1px solid #E1DC00;
+	border-top-width: #E1DC00;
+	border-left-width: #E1DC00;
+}
+
+
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0   #82C3D7, stop:1 #C8E4EE);
+	border: 0.5px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Profile</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblProfLInstr">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>59</y>
+      <width>261</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>Scroll down to see the previous profile results. Click the 'Clear' button to clear the history.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtnClear">
+    <property name="geometry">
+     <rect>
+      <x>294</x>
+      <y>60</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Helvetica</family>
+      <weight>12</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #FFFF37;
+	border-radius: 3px;
+	color: #4B4B4B;
+	font-family: &quot;Helvetica&quot;;
+	font-weight: 100;
+	border: 1px solid #E1DC00;
+	border-top-width: #E1DC00;
+	border-left-width: #E1DC00;
+}
+
+
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0   #82C3D7, stop:1 #C8E4EE);
+	border: 0.5px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Clear</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblProfStatus">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>400</y>
+      <width>311</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="gboxAddtInfo">
+   <property name="geometry">
+    <rect>
+     <x>419</x>
+     <y>480</y>
+     <width>631</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>David</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="title">
+    <string>Data File Information</string>
+   </property>
+   <widget class="QTextBrowser" name="tbInputFilePath">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>611</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="lineWrapMode">
+     <enum>QTextEdit::WidgetWidth</enum>
+    </property>
+    <property name="acceptRichText">
+     <bool>false</bool>
+    </property>
+    <property name="textInteractionFlags">
+     <set>Qt::LinksAccessibleByMouse</set>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="tbOutPutPath">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>611</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="tbLogPath">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>611</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="tbExtractPath">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>190</y>
+      <width>611</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="tbExtractNoIssuePath">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>611</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+   </widget>
+  </widget>
+  <zorder>gboxFileProfile</zorder>
+  <zorder>gboxFileSelection</zorder>
+  <zorder>gboxFilePreview</zorder>
+  <zorder>gboxFixFile</zorder>
+  <zorder>gboxAddtInfo</zorder>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>lnedEnterDel</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pbtnProfile</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>194</x>
+     <y>409</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>297</x>
+     <y>411</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lnedEnterDelCount</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pbtnFixFile</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>653</x>
+     <y>409</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>818</x>
+     <y>411</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
